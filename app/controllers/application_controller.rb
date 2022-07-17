@@ -1,6 +1,12 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
+  # Check if user exists
+  get '/users/:email' do
+    user = User.find_by(email: params[:email])
+    user.to_json
+  end
+  
   # Add new user
   post '/signup' do
     user = User.create(
