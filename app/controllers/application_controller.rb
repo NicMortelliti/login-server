@@ -25,6 +25,6 @@ class ApplicationController < Sinatra::Base
       email: params[:email],
       password: params[:password]
     )
-    user.to_json()
+    user.to_json(only: [:name])
   end
 end
